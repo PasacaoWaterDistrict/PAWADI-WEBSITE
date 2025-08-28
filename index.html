@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pasacao Water District (PAWADI)</title>
+  <meta name="description" content="Official website of Pasacao Water District (PAWADI), providing safe, reliable, and affordable water service to the Municipality of Pasacao, Camarines Sur." />
+  <meta name="theme-color" content="#0b4f6c" />
+  <style>
+    :root {
+      --bg: #f7fafc;
+      --text: #1a202c;
+      --muted: #4a5568;
+      --brand: #0b4f6c; /* deep teal */
+      --brand-2: #1e88e5; /* blue accent */
+      --panel: #ffffff;
+      --ring: #cbd5e0;
+    }
+    body.high-contrast {
+      --bg: #ffffff;
+      --text: #000000;
+      --muted: #111111;
+      --brand: #000000;
+      --brand-2: #000000;
+      --panel: #ffffff;
+      --ring: #000000;
+    }
+    /* Base */
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    a { color: var(--brand-2); text-decoration: none; }
+    a:hover, a:focus { text-decoration: underline; }
+    .container { width: min(1100px, 92vw); margin: 0 auto; }
+
+    /* GOVPH banner (simple) */
+    .govph { background: #000; color: #fff; font-size: 14px; }
+    .govph a { color: #fff; text-decoration: underline; }
+    .govph-inner { display: flex; gap: .5rem; justify-content: center; align-items: center; padding: .5rem .75rem; }
+
+    /* Header */
+    header { background: var(--panel); border-bottom: 1px solid var(--ring); position: sticky; top: 0; z-index: 50; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .75rem 0; }
+    .logo { display: flex; align-items: center; gap: .75rem; }
+    .logo img { width: 44px; height: 44px; object-fit: cover; border-radius: 6px; }
+    .logo h1 { font-size: 1.15rem; margin: 0; }
+    nav ul { display: flex; gap: 1rem; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
+    nav a { padding: .5rem .65rem; border-radius: .5rem; }
+    nav a:focus, nav a:hover { background: #e6f2f8; text-decoration: none; }
+    .btn { display: inline-flex; align-items: center; gap: .5rem; border: 1px solid var(--brand); color: #fff; background: var(--brand); padding: .6rem .9rem; border-radius: .6rem; font-weight: 600; }
+    .btn.secondary { background: #fff; color: var(--brand); border-color: var(--brand); }
+
+    /* Skip link */
+    .skip { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+    .skip:focus { position: static; width: auto; height: auto; padding: .5rem .75rem; background: #ff0; color: #000; }
+
+    /* Hero */
+    .hero { background: linear-gradient(135deg, #e6f2f8, #ffffff); border-bottom: 1px solid var(--ring); }
+    .hero-inner { display: grid; grid-template-columns: 1.2fr .8fr; gap: 1.75rem; padding: 2rem 0 1.5rem; }
+    .hero h2 { font-size: clamp(1.6rem, 3.2vw, 2.3rem); margin: 0 0 .25rem; color: var(--brand); }
+    .hero p { margin: .25rem 0 1rem; color: var(--muted); }
+
+    /* Status ticker */
+    .ticker { background: #fff; border: 1px solid var(--ring); border-radius: .75rem; padding: .75rem; display: flex; gap: 1rem; align-items: center; }
+    .pill { display: inline-block; padding: .2rem .55rem; border-radius: 999px; font-size: .75rem; font-weight: 700; color: #0b5; background: #e7f9ef; border: 1px solid #b7efcd; }
+    .pill.warning { color: #b45309; background: #fff7ed; border-color: #ffedd5; }
+
+    /* Cards */
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.25rem 0 0; }
+    .card { background: var(--panel); border: 1px solid var(--ring); border-radius: .9rem; padding: 1rem; }
+    .card h3 { margin: .25rem 0 .5rem; font-size: 1.05rem; }
+    .card p { margin: 0; color: var(--muted); }
+
+    /* Sections */
+    section { padding: 2rem 0; }
+    .section-title { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
+    .section-title h2 { margin: 0; font-size: 1.25rem; color: var(--brand); }
+    .panel { background: var(--panel); border: 1px solid var(--ring); border-radius: .9rem; padding: 1rem; }
+
+    /* Lists & tables */
+    .list { display: grid; gap: .75rem; margin: 0; padding: 0; list-style: none; }
+    .list li { padding: .5rem; border-bottom: 1px dashed #e2e8f0; }
+    .list li:last-child { border-bottom: none; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border: 1px solid #e2e8f0; padding: .5rem .6rem; text-align: left; }
+    th { background: #f1f5f9; }
+
+    /* Footer */
+    footer { background: #0b4f6c; color: #e6f2f8; padding: 1.5rem 0; margin-top: 2rem; }
+    footer a { color: #fff; }
+
+    /* Responsive tweaks */
+    @media (max-width: 900px) { .hero-inner { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="govph" role="region" aria-label="GOVPH banner">
+    <div class="govph-inner">
+      <strong>GOVPH</strong> <span>Official Website of Pasacao Water District</span>
+      <span aria-hidden="true">•</span>
+      <a href="#accessibility">Accessibility</a>
+      <span aria-hidden="true">•</span>
+      <button id="contrastBtn" class="btn secondary" style="padding:.25rem .5rem; font-size:.85rem;">Toggle High Contrast</button>
+    </div>
+  </div>
+
+  <header role="banner">
+    <div class="container topbar">
+      <div class="logo">
+        <!-- Replace with the official PAWADI logo file path -->
+        <img src="logo-placeholder.png" alt="PAWADI logo" />
+        <h1>Pasacao Water District (PAWADI)</h1>
+      </div>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#rates">Water Rates</a></li>
+          <li><a href="#announcements">Announcements</a></li>
+          <li><a href="#transparency">Transparency &amp; FOI</a></li>
+          <li><a href="#procurement">Bids &amp; Procurement</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <h2>Safe, reliable, and affordable water for every Pasaqueño.</h2>
+          <p>PAWADI is a self‑sustaining, self‑liquidating government‑owned and controlled corporation committed to efficient service, environmental stewardship, and transparency.</p>
+          <div class="ticker" role="status" aria-live="polite">
+            <span class="pill" id="serviceStatus">Normal Operations</span>
+            <div>
+              <strong>Service Advisory:</strong>
+              <span id="advisoryText">No scheduled interruptions at the moment. Follow our Facebook page for real‑time updates.</span>
+            </div>
+          </div>
+          <div class="cards">
+            <a class="card" href="#services">
+              <h3>Apply for New Connection</h3>
+              <p>Requirements and downloadable forms.</p>
+            </a>
+            <a class="card" href="#payments">
+              <h3>Pay Bill</h3>
+              <p>Over‑the‑counter, bank partners, and e‑wallets (GCash — coming soon).</p>
+            </a>
+            <a class="card" href="#report">
+              <h3>Report a Leak / No Water</h3>
+              <p>Hotlines and quick report form.</p>
+            </a>
+            <a class="card" href="#certificates">
+              <h3>Request a Certification</h3>
+              <p>For CMCI, business permits, account status, and related needs.</p>
+            </a>
+          </div>
+        </div>
+        <div class="panel" aria-labelledby="hoursTitle">
+          <h3 id="hoursTitle" style="margin-top:0">Office Hours &amp; Hotlines</h3>
+          <ul class="list">
+            <li><strong>Office:</strong> Mon–Fri, 8:00 AM–5:00 PM (except holidays)</li>
+            <li><strong>Address:</strong> <!-- Insert complete office address here --> Pasacao, Camarines Sur</li>
+            <li><strong>Customer Service:</strong> <!-- Insert hotline numbers --> (0xx) xxx xxxx / +63 xxx xxx xxxx</li>
+            <li><strong>Email:</strong> <a href="mailto:info@pawadi.gov.ph">info@pawadi.gov.ph</a> <!-- replace with official email --></li>
+            <li><strong>Facebook:</strong> <!-- Insert official page link --> <a href="#">facebook.com/PAWADI</a></li>
+          </ul>
+          <p style="margin:.5rem 0 0; color:var(--muted); font-size:.9rem;">For emergency leaks and bursts after office hours, please call the hotline.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="container">
+      <div class="section-title"><h2>About PAWADI</h2></div>
+      <div class="panel">
+        <p><strong>Mandate.</strong> Acquire, install, improve, maintain, and operate water supply and distribution systems for domestic, industrial, municipal, and agricultural uses within the Municipality of Pasacao, per Presidential Decree No. 198.</p>
+        <p><strong>Vision.</strong> Quality water service for a resilient, healthy, and progressive Pasacao.</p>
+        <p><strong>Mission.</strong> Deliver safe and reliable water, practice responsible resource management, and uphold transparency and citizen‑centric service.</p>
+        <details>
+          <summary><strong>Board of Directors &amp; Management</strong></summary>
+          <ul class="list" style="margin-top:.75rem;">
+            <li>General Manager: <!-- Insert GM name --></li>
+            <li>Board Chairperson: <!-- Insert name --></li>
+            <li>Directors: <!-- Insert names --></li>
+          </ul>
+        </details>
+      </div>
+    </section>
+
+    <section id="services" class="container">
+      <div class="section-title"><h2>Customer Services</h2></div>
+      <div class="panel">
+        <ul class="list">
+          <li><strong>New Service Connection</strong> — Requirements, fees, and inspection schedule. <a href="#downloads">Download forms</a>.</li>
+          <li><strong>Reconnection / Disconnection</strong> — Procedures and turnaround times.</li>
+          <li><strong>Change of Ownership / Reclassification</strong> — Documentary requirements.</li>
+          <li><strong>Meter Testing / Calibration</strong> — Request, fees, and results release.</li>
+          <li><strong>Billing Adjustments &amp; Promissory Notes</strong> — Qualifications and process.</li>
+          <li><strong>Certificate Requests</strong> — Account status, billing history, CMCI support, etc.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="rates" class="container">
+      <div class="section-title">
+        <h2>Water Rates</h2>
+        <a class="btn secondary" href="#downloads">Download Full Schedule (PDF)</a>
+      </div>
+      <div class="panel">
+        <!-- Note: Replace/expand with the official Board‑approved schedule. Numbers below were provided for CMCI as of Dec 31, 2024. -->
+        <p style="margin-top:0"><em>As of December 31, 2024 (for CMCI reference) — Commercial C</em></p>
+        <div class="table-wrap">
+          <table aria-label="Commercial C Rates">
+            <thead>
+              <tr><th>Consumption Bracket (cu.m)</th><th>Rate</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>0–10</td><td>₱363.75 (minimum charge)</td></tr>
+              <tr><td>11–20</td><td>₱41.65 / cu.m</td></tr>
+              <tr><td>21–30</td><td>₱46.65 / cu.m</td></tr>
+              <tr><td>31–40</td><td>₱53.05 / cu.m</td></tr>
+              <tr><td>41 and up</td><td>₱61.15 / cu.m</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="color:var(--muted); font-size:.95rem;">For residential and other classes, please see the downloadable PDF or visit the office. Rates are subject to Board/LWUA approvals.</p>
+      </div>
+    </section>
+
+    <section id="announcements" class="container">
+      <div class="section-title"><h2>Public Service Announcements</h2></div>
+      <div class="panel">
+        <ul class="list" id="annList">
+          <li><strong>[MM/DD/YYYY]</strong> Town Fiesta Water Rationing Plan — Afternoon &amp; evening runs to ensure supply in Del Norte, Del Sur, and San Cirilo. Coordination with BFP/LGU ongoing.</li>
+          <li><strong>[MM/DD/YYYY]</strong> Pipeline Rehabilitation — Ongoing works at Brgy. Bagong Silang after Typhoon Kristine landslide damage; expect occasional low pressure.</li>
+          <li><strong>[MM/DD/YYYY]</strong> GCash Bills Payment — Integration in progress pending agreement with G‑Xchange Inc.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="transparency" class="container">
+      <div class="section-title"><h2>Transparency, FOI &amp; Citizen’s Charter</h2></div>
+      <div class="panel">
+        <ul class="list">
+          <li><strong>Transparency Seal:</strong> <a href="#">View PAWADI Transparency Page</a> <!-- link to DBM transparency content -->
+          </li>
+          <li><strong>Citizen’s Charter:</strong> <a href="#">Download Citizen’s Charter (PDF)</a></li>
+          <li><strong>Freedom of Information (FOI):</strong> File a request via <a href="https://www.foi.gov.ph/" target="_blank" rel="noopener">foi.gov.ph</a>. <!-- Replace with agency page once onboarded --></li>
+          <li><strong>Data Privacy:</strong> <a href="#">PAWADI Privacy Notice</a></li>
+          <li><strong>Gender and Development (GAD) Corner:</strong> <a href="#">Programs &amp; Reports</a></li>
+          <li><strong>Quality &amp; Accessibility:</strong> This site follows WCAG 2.0 (POUR) principles. <a href="#accessibility">Read accessibility statement</a>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="procurement" class="container">
+      <div class="section-title"><h2>Projects, Bids &amp; Procurement</h2></div>
+      <div class="panel">
+        <p>All bid opportunities, requests for quotation, and awards will be posted here. For inquiries, contact the BAC Secretariat.</p>
+        <ul class="list">
+          <li><strong>Ongoing:</strong> <!-- Example --> Supply &amp; Delivery of Ultrasonic Flow Meters — <a href="#">Invitation to Bid (PDF)</a></li>
+          <li><strong>Previous Awards:</strong> <a href="#">View awards and abstracts</a></li>
+          <li><strong>BAC:</strong> Chairperson, Vice‑Chair, Members, and Secretariat (per latest Board Resolution).</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="downloads" class="container">
+      <div class="section-title"><h2>Forms &amp; Downloads</h2></div>
+      <div class="panel">
+        <ul class="list">
+          <li><a href="#">Application for Water Service Connection (PDF)</a></li>
+          <li><a href="#">Service Reclassification Request (PDF)</a></li>
+          <li><a href="#">Request for Reconnection/Disconnection (PDF)</a></li>
+          <li><a href="#">Certificate Request Form (PDF)</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="report" class="container">
+      <div class="section-title"><h2>Report a Leak / No Water</h2></div>
+      <div class="panel">
+        <p>Call the hotline or send details to our email with your name, address, account number (if any), and a description of the concern. You may also attach photos or short videos.</p>
+      </div>
+    </section>
+
+    <section id="payments" class="container">
+      <div class="section-title"><h2>How to Pay</h2></div>
+      <div class="panel">
+        <ul class="list">
+          <li><strong>Over‑the‑counter:</strong> PAWADI Cashier, partner banks, and collectors (official receipt required).</li>
+          <li><strong>Online / e‑wallets:</strong> GCash (coming soon), LandBank ePayment (if enabled).</li>
+          <li><strong>Reminders:</strong> Keep your official receipt. Payments after the due date may incur penalties per policy.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="certificates" class="container">
+      <div class="section-title"><h2>Request a Certification</h2></div>
+      <div class="panel">
+        <p>Certificates (e.g., CMCI support, account status, no‑arrears) can be requested at the office or via email. Standard processing times and fees apply per Citizen’s Charter.</p>
+      </div>
+    </section>
+
+    <section id="contact" class="container">
+      <div class="section-title"><h2>Contact Us</h2></div>
+      <div class="panel">
+        <ul class="list">
+          <li><strong>Office:</strong> Pasacao Water District (PAWADI)</li>
+          <li><strong>Address:</strong> <!-- Insert complete address --> Pasacao, Camarines Sur 4417</li>
+          <li><strong>Phone:</strong> (0xx) xxx xxxx</li>
+          <li><strong>Email:</strong> <a href="mailto:info@pawadi.gov.ph">info@pawadi.gov.ph</a></li>
+          <li><strong>Business Hours:</strong> Mon–Fri, 8:00 AM–5:00 PM</li>
+        </ul>
+        <p style="color:var(--muted); font-size:.95rem;">For media, partnerships, and institutional coordination, please address communications to the Office of the General Manager.</p>
+      </div>
+    </section>
+
+    <section id="accessibility" class="container">
+      <div class="section-title"><h2>Accessibility Statement (WCAG 2.0)</h2></div>
+      <div class="panel">
+        <p>PAWADI is committed to making its web content accessible based on the Web Content Accessibility Guidelines (WCAG) 2.0 principles of Perceivable, Operable, Understandable, and Robust (POUR). If you experience accessibility issues, contact us via the email above.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="container">
+      <p style="margin:.25rem 0 .75rem"><strong>Pasacao Water District (PAWADI)</strong> — Serving the Municipality of Pasacao, Camarines Sur.</p>
+      <p style="margin:.25rem 0; font-size:.95rem;">© <span id="year"></span> PAWADI. All rights reserved. | <a href="#">Privacy</a> | <a href="#">FOI</a> | <a href="#">Transparency</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // High contrast toggle
+    const btn = document.getElementById('contrastBtn');
+    btn.addEventListener('click', () => {
+      document.body.classList.toggle('high-contrast');
+      btn.setAttribute('aria-pressed', document.body.classList.contains('high-contrast'));
+    });
+
+    // Example: update ticker quickly by editing these variables (no coding needed)
+    const STATUS = 'Normal Operations'; // e.g., 'Low Pressure', 'Scheduled Rationing', 'Emergency Repair'
+    const STATUS_TYPE = 'ok'; // 'ok' | 'warn'
+    const NOTE = 'No scheduled interruptions at the moment. Follow our Facebook page for real‑time updates.';
+
+    const statusEl = document.getElementById('serviceStatus');
+    const noteEl = document.getElementById('advisoryText');
+    statusEl.textContent = STATUS;
+    if (STATUS_TYPE === 'warn') statusEl.classList.add('warning');
+    noteEl.textContent = NOTE;
+  </script>
+</body>
+</html>
